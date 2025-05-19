@@ -7,7 +7,7 @@ void add();
 void delete(const char *target_id);
 
 void search(const char *id) {
-    FILE *fp = fopen("database.csv", "r");
+    FILE *fp = fopen("database1.csv", "r");
 
     if (fp == NULL) {
         printf("\n[!] Error opening file.\n");
@@ -66,7 +66,7 @@ void add() {
 
     snprintf(newrow, sizeof(newrow), "\n%s,%s,%s,%s", id, name, email, role);
 
-    FILE *fp = fopen("database.csv", "a");
+    FILE *fp = fopen("database1.csv", "a");
     if (fp == NULL) {
         printf("\n[!] Error opening database.\n");
     } else {
@@ -77,7 +77,7 @@ void add() {
 }
 
 void delete(const char *target_id) {
-    FILE *fp = fopen("database.csv", "r");
+    FILE *fp = fopen("database1.csv", "r");
     FILE *temp = fopen("temp.csv", "w");
 
     if (fp == NULL || temp == NULL) {
@@ -104,8 +104,8 @@ void delete(const char *target_id) {
     fclose(fp);
     fclose(temp);
 
-    remove("database.csv");
-    rename("temp.csv", "database.csv");
+    remove("database1.csv");
+    rename("temp.csv", "database1.csv");
 
     if (found)
         printf("\n✅ Row with ID '%s' deleted successfully!\n\n", target_id);
